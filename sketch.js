@@ -7,9 +7,6 @@ var engine, world;
 var box1,box2,box3;
 var polygon, slingshot,ground;
 
-var gameState = "onSling";
-var score = 0;
-
 
 function setup(){
     var canvas = createCanvas(1200,400);
@@ -67,21 +64,16 @@ function draw(){
 }
 
 function mouseDragged(){
-   // if (gameState!=="launched"){
-        Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
-   // }
+    Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY}); 
 }
 
 
 function mouseReleased(){
     slingshot.fly();
-    gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        bird.trajectory = [];
-        Matter.Body.setPosition(polygon.body,{x: 200,y:50})
         slingshot.attach(polygon.body);
     }
 }
